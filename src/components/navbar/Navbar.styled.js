@@ -10,6 +10,7 @@ export const NavbarContainer = styled.div`
   align-items: center;
   margin: 0 auto;
   padding: 1.5em 1em;
+  z-index: 999;
 `;
 
 export const Navigation = styled.nav`
@@ -27,15 +28,26 @@ export const Navigation = styled.nav`
   @media only screen and (min-width: 960px) {
     position: inherit;
     height: 80px;
-    width: 80%;
+    /* width: 80%; */
     background-color: ${({ theme }) => theme.colors.white};
     padding: 3em 1.5em 2em;
     justify-content: flex-end;
-    border-bottom: ${({ theme }) => `2px solid ${theme.colors.lightGrey}`};
+    /* border-bottom: ${({ theme }) =>
+      `2px solid ${theme.colors.lightGrey}`}; */
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 80%;
+      bottom: -10px;
+      right: 60px;
+      border-bottom: ${({ theme }) => `2px solid ${theme.colors.lightGrey}`};
+    }
   }
 `;
 
 export const Menu = styled.ul`
+  position: relative;
   border-left: ${({ theme }) => `2px solid ${theme.colors.white}`};
   padding: 1.5em 1em;
 
