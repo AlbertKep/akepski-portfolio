@@ -7,9 +7,9 @@ import {
   Background,
   Heading,
   Subheading,
-  Text,
   ImageContainer,
 } from "./Home.styled";
+import { Text } from "../../components/templates/Text";
 
 const Home = () => {
   return (

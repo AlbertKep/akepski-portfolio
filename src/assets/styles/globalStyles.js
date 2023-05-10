@@ -16,4 +16,8 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
+
+li {
+  list-style-type: none;
+}
 `;

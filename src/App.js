@@ -2,6 +2,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./assets/styles/globalStyles";
 import { theme } from "./assets/styles/theme";
 import Navbar from "./components/navbar/Navbar";
+import About from "./pages/about/About";
 import Home from "./pages/home/Home";
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
 
       <Navbar />
       <Home />
+      <About />
     </ThemeProvider>
   );
 };

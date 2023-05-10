@@ -49,11 +49,6 @@ export const Subheading = styled.h3`
   font-size: clamp(1.5rem, 3.5vw + 1rem, 2rem);
 `;
 
-export const Text = styled.p`
-  font-size: clamp(1.2rem, 1vw + 0.2rem, 1.6rem);
-  text-align: justify;
-`;
-
 export const ImageContainer = styled.div`
   display: none;
 

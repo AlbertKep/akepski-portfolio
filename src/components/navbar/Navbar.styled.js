@@ -2,58 +2,47 @@ import styled from "styled-components";
 
 export const NavbarContainer = styled.div`
   position: sticky;
-  max-width: 1600px;
-  display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  align-items: center;
-  margin: 0 auto;
-  padding: 1.5em 1em;
+  top: 0;
   z-index: 999;
+
+  @media only screen and (min-width: 960px) {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 2em 0;
+    background-color: ${({ theme }) => theme.colors.white};
+    -webkit-box-shadow: 0px 6px 9px -3px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 6px 9px -3px rgba(66, 68, 90, 1);
+    box-shadow: 0px 6px 9px -3px rgba(66, 68, 90, 1);
+  }
 `;
 
 export const Navigation = styled.nav`
-  position: absolute;
-  top: 0;
-  right: ${({ isOpen }) => (!isOpen ? 0 : "-100%")};
-  height: 100vh;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.black};
-  transition: all 0.2s ease-in;
+  position: fixed;
+  top: 0;
+  right: ${({ isOpen }) => (!isOpen ? "-100%" : 0)};
+  width: 100%;
+  height: 100svh;
+  transition: all 0.2s ease-in-out;
 
   @media only screen and (min-width: 960px) {
     position: inherit;
-    height: 80px;
-    /* width: 80%; */
     background-color: ${({ theme }) => theme.colors.white};
-    padding: 3em 1.5em 2em;
-    justify-content: flex-end;
-    /* border-bottom: ${({ theme }) =>
-      `2px solid ${theme.colors.lightGrey}`}; */
-
-    &::after {
-      position: absolute;
-      content: "";
-      width: 80%;
-      bottom: -10px;
-      right: 60px;
-      border-bottom: ${({ theme }) => `2px solid ${theme.colors.lightGrey}`};
-    }
+    height: auto;
+    width: max-content;
   }
 `;
 
 export const Menu = styled.ul`
-  position: relative;
-  border-left: ${({ theme }) => `2px solid ${theme.colors.white}`};
+  margin: 0;
   padding: 1.5em 1em;
+  border-left: ${({ theme }) => `2px solid ${theme.colors.white}`};
 
   @media only screen and (min-width: 960px) {
     display: flex;
-    border-left: none;
   }
 `;
 
@@ -61,14 +50,9 @@ export const MenuLink = styled.li`
   position: relative;
   list-style-type: none;
   margin-top: 1.5em;
-  padding: 0 0.2em;
-  font-size: clamp(1.8rem, 2vw, 2rem);
+  padding: 0.5em 1em;
   text-align: center;
   cursor: pointer;
-
-  &:last-child {
-    margin-bottom: 1.5em;
-  }
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.white};
@@ -82,9 +66,9 @@ export const MenuLink = styled.li`
       position: absolute;
       content: "";
       width: 0;
+      height: 0;
       bottom: -10px;
       left: 15px;
-      height: 0;
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
       border-left: 10px solid white;
@@ -94,11 +78,24 @@ export const MenuLink = styled.li`
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.colors.white};
-    /* font-size: clamp(1.8rem, 3.5vw, 3.8rem); */
     font-size: 1.3rem;
 
     @media only screen and (min-width: 960px) {
       color: ${({ theme }) => theme.colors.black};
+      align-self: baseline;
+
+      &:hover {
+        background-color: ${({ theme }) => theme.colors.black};
+        border-radius: 5px;
+
+        a {
+          color: ${({ theme }) => theme.colors.white};
+        }
+
+        &::after {
+          border-left: 10px solid black;
+        }
+      }
     }
   }
 
@@ -122,8 +119,23 @@ export const MenuLink = styled.li`
     }
   }
 `;
+export const IconsContainer = styled.div`
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  z-index: 999;
 
-export const ImageContainer = styled.div`
+  @media only screen and (min-width: 960px) {
+    width: min-content;
+  }
+`;
+
+export const Logo = styled.div`
   width: 65px;
   cursor: pointer;
   z-index: 999;
@@ -132,7 +144,7 @@ export const ImageContainer = styled.div`
     width: 100%;
   }
 `;
-export const MobileIconContainer = styled(ImageContainer)`
+export const MobileIcon = styled(Logo)`
   @media only screen and (min-width: 960px) {
     display: none;
   }
