@@ -4,6 +4,7 @@ import { theme } from "./assets/styles/theme";
 import Navbar from "./components/navbar/Navbar";
 import About from "./pages/about/About";
 import Home from "./pages/home/Home";
+import Projects from "./pages/projects/Projects";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Navbar />
       <Home />
       <About />
+      <Projects />
     </ThemeProvider>
   );
 };
