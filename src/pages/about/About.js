@@ -4,6 +4,9 @@ import JsIcon from "../../assets/svg/technologies/js-icon.svg";
 import ReactIcon from "../../assets/svg/technologies/react-icon.svg";
 import PersonAbout from "../../components/svgComponents/PersonAbout";
 
+import React, { useEffect } from "react";
+import { useInView } from "framer-motion";
+
 import { Text } from "../../components/templates/Text";
 import {
   AboutContainer,
@@ -23,14 +26,21 @@ const Technologies = [
   { icon: CssIcon, name: "Css" },
   { icon: JsIcon, name: "Java Script" },
   { icon: ReactIcon, name: "React" },
-  { icon: HtmlIcon, name: "Html" },
-  { icon: CssIcon, name: "Css" },
-  { icon: JsIcon, name: "Java Script" },
+  { icon: HtmlIcon, name: "Html5" },
+  { icon: CssIcon, name: "Css3" },
+  { icon: JsIcon, name: "Java Script1" },
 ];
 
-const About = () => {
+const About = (props, ref) => {
+  const isInView = useInView(ref, { margin: "-450px"});
+
+  useEffect(() => {
+    if (isInView) props.updateCurrentPage("02");
+    
+  }, [isInView]);
+
   return (
-    <AboutContainer>
+    <AboutContainer ref={ref} data-component-name="about">
       <AboutContent>
         <Wrapper>
           <Heading>
@@ -71,4 +81,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default React.forwardRef(About);

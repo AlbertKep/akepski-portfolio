@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const ContentContainer = styled.div`
+export const ContentContainer = styled(motion.div)`
   position: relative;
   height: calc(100svh - 80px);
   max-width: 600px;
@@ -31,7 +32,7 @@ export const Background = styled.div`
   }
 `;
 
-export const Heading = styled.h1`
+export const Heading = styled(motion.h1)`
   text-transform: uppercase;
   font-size: clamp(3rem, 2.5vw + 1rem, 6rem);
   line-height: clamp(1.8em, 4.5vw + 1em, 2em);
@@ -45,7 +46,7 @@ export const Heading = styled.h1`
   }
 `;
 
-export const Subheading = styled.h3`
+export const Subheading = styled(motion.h3)`
   font-size: clamp(1.5rem, 3.5vw + 1rem, 2rem);
 `;
 

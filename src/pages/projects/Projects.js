@@ -1,3 +1,5 @@
+import React, { useEffect } from "react";
+import { useInView } from "framer-motion";
 import examplePicture from "../../assets/images/pablo-heimplatz-ZODcBkEohk8-unsplash.jpg";
 
 import {
@@ -10,15 +12,26 @@ import {
   Name,
   Description,
 } from "./Projects.styled";
-const Projects = () => {
+import { useState } from "react";
+
+const Projects = (props, ref) => {
+  const isInView = useInView(ref, {
+    margin: "-400px",
+  });
+
+  useEffect(() => {
+    if (isInView) props.updateCurrentPage("03");
+    
+  }, [isInView]);
+
+
   return (
-    <ProjectsContainer>
+    <ProjectsContainer ref={ref} data-component-name="projects">
       <div>
         <Heading>
           <span>what</span> <br />I did
         </Heading>
       </div>
-
       <ProjectsList>
         <Project>
           <ImageContainer>
@@ -67,4 +80,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default React.forwardRef(Projects);
