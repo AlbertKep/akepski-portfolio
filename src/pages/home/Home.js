@@ -7,7 +7,7 @@ import { Text } from "../../components/templates/Text";
 
 import Person from "../../components/svgComponents/Person";
 
-import {rightMoveVariants, leftMoveVariants} from '../../animationsSettings'
+import { rightMoveVariants, leftMoveVariants } from "../../animationsSettings";
 
 import {
   ContentContainer,
@@ -24,9 +24,8 @@ const Home = (props, ref) => {
 
   useEffect(() => {
     if (isInView) props.updateCurrentPage("01");
-    
+    // console.log(ref);
   }, [isInView]);
-
 
   // const rightMoveVariants = {
   //   initial: { x: -100, opacity: 0 },

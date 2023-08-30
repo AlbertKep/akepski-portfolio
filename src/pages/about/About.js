@@ -32,11 +32,10 @@ const Technologies = [
 ];
 
 const About = (props, ref) => {
-  const isInView = useInView(ref, { margin: "-450px"});
+  const isInView = useInView(ref, { margin: "-450px" });
 
   useEffect(() => {
     if (isInView) props.updateCurrentPage("02");
-    
   }, [isInView]);
 
   return (

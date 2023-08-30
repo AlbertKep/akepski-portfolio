@@ -53,49 +53,38 @@ export const MenuLink = styled.li`
   padding: 0.5em 1em;
   text-align: center;
   cursor: pointer;
+  color: ${({ theme, isActiveLink }) =>
+    isActiveLink ? theme.colors.black : theme.colors.white};
+  background-color: ${({ theme, isActiveLink }) =>
+    isActiveLink ? theme.colors.white : theme.colors.black};
+  font-size: 1.3rem;
+  border-radius: 5px;
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.white};
-    border-radius: 5px;
-
-    & a {
-      color: ${({ theme }) => theme.colors.black};
-    }
-
-    &::after {
-      position: absolute;
-      content: "";
-      width: 0;
-      height: 0;
-      bottom: -10px;
-      left: 15px;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-left: 10px solid white;
-    }
+  &::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    bottom: 13px;
+    left: -10px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid;
+    border-right-color: ${({ isActiveLink, theme }) =>
+      isActiveLink && theme ? theme.colors.white : theme.colors.black};
   }
 
-  a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.white};
-    font-size: 1.3rem;
+  &:hover {
+    background-color: ${({ theme, isActiveLink }) =>
+      isActiveLink || !isActiveLink ? theme.colors.white : theme.colors.black};
+    color: ${({ theme, isActiveLink }) =>
+      isActiveLink || !isActiveLink ? theme.colors.black : theme.colors.white};
 
-    @media only screen and (min-width: 960px) {
-      color: ${({ theme }) => theme.colors.black};
-      align-self: baseline;
-
-      &:hover {
-        background-color: ${({ theme }) => theme.colors.black};
-        border-radius: 5px;
-
-        a {
-          color: ${({ theme }) => theme.colors.white};
-        }
-
-        &::after {
-          border-left: 10px solid black;
-        }
-      }
+    &::after {
+      border-right-color: ${({ isActiveLink, theme }) =>
+        isActiveLink || !isActiveLink
+          ? theme.colors.white
+          : theme.colors.black};
     }
   }
 
@@ -104,17 +93,34 @@ export const MenuLink = styled.li`
     align-self: baseline;
     padding-right: 0.7em;
     padding-left: 0.7em;
+    color: ${({ theme, isActiveLink }) =>
+      isActiveLink ? theme.colors.white : theme.colors.black};
+    background-color: ${({ theme, isActiveLink }) =>
+      isActiveLink ? theme.colors.black : theme.colors.white};
+
+    &::after {
+      left: 10px;
+      bottom: -10px;
+      transform: rotateY(150deg);
+      border-right-color: ${({ isActiveLink, theme }) =>
+        isActiveLink && theme ? theme.colors.black : theme.colors.white};
+    }
 
     &:hover {
-      background-color: ${({ theme }) => theme.colors.black};
-      border-radius: 5px;
-
-      a {
-        color: ${({ theme }) => theme.colors.white};
-      }
+      background-color: ${({ theme, isActiveLink }) =>
+        isActiveLink || !isActiveLink
+          ? theme.colors.black
+          : theme.colors.white};
+      color: ${({ theme, isActiveLink }) =>
+        isActiveLink || !isActiveLink
+          ? theme.colors.white
+          : theme.colors.black};
 
       &::after {
-        border-left: 10px solid black;
+        border-right-color: ${({ isActiveLink, theme }) =>
+          isActiveLink || !isActiveLink
+            ? theme.colors.black
+            : theme.colors.white};
       }
     }
   }

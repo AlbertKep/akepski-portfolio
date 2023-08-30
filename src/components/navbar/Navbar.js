@@ -11,12 +11,30 @@ import {
 import logo from "../../assets/svg/logo.svg";
 import hamburger from "../../assets/svg/hamburger.svg";
 import close from "../../assets/svg/close.svg";
+import { useEffect } from "react";
 
-const Navbar = () => {
+const data = [
+  { name: "home", isActive: "active" },
+  { name: "about", isActive: "" },
+  { name: "projects", isActive: "" },
+  { name: "contact me", isActive: "" },
+];
+const Navbar = ({ getRef }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [sections, setSections] = useState(data);
   const handleClick = () => {
     setIsOpen((prev) => !prev);
+  };
+
+  const activeSection = (section, i) => {
+    const newArr = [...sections];
+    newArr.forEach((sec) => {
+      sec.isActive = "";
+    });
+    newArr[i].isActive = "active";
+
+    setSections(newArr);
+    getRef(section.name);
   };
 
   return (
@@ -32,18 +50,15 @@ const Navbar = () => {
 
       <Navigation isOpen={isOpen}>
         <Menu>
-          <MenuLink>
-            <a href="#">home</a>
-          </MenuLink>
-          <MenuLink>
-            <a href="#">about me</a>
-          </MenuLink>
-          <MenuLink>
-            <a href="#">works</a>
-          </MenuLink>
-          <MenuLink>
-            <a href="#">contact me</a>
-          </MenuLink>
+          {sections?.map((section, index) => (
+            <MenuLink
+              key={section.name}
+              isActiveLink={section.isActive}
+              onClick={() => activeSection(section, index)}
+            >
+              {section.name}
+            </MenuLink>
+          ))}
         </Menu>
       </Navigation>
     </NavbarContainer>

@@ -12,7 +12,6 @@ import {
   Name,
   Description,
 } from "./Projects.styled";
-import { useState } from "react";
 
 const Projects = (props, ref) => {
   const isInView = useInView(ref, {
@@ -21,9 +20,7 @@ const Projects = (props, ref) => {
 
   useEffect(() => {
     if (isInView) props.updateCurrentPage("03");
-    
   }, [isInView]);
-
 
   return (
     <ProjectsContainer ref={ref} data-component-name="projects">

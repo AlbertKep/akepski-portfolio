@@ -7,40 +7,31 @@ import About from "./pages/about/About";
 import Home from "./pages/home/Home";
 import Projects from "./pages/projects/Projects";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 
 const App = () => {
-  // const homeRef = useRef(null);
-  // const aboutRef = useRef(null);
-  // const projectsRef = useRef(null);
-  const [currentPage, setCurrentPage] = useState("01");
-  const componentsRefs = useRef([]);
   const projectsRef = useRef();
   const aboutRef = useRef();
   const homeRef = useRef();
 
+  const [currentPage, setCurrentPage] = useState("01");
+
   const updateCurrentPage = (page) => setCurrentPage(page);
 
-  useEffect(() => {
-    console.log(currentPage);
-  }, [currentPage]);
-  // const options = {
-  //   root: null,
-  //   rootMargin: "0px",
-  //   treshhold: 1,
-  // };
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver((entries, observer) => {
-  //     entries.forEach((entry) => {
-  //       console.log(entry);
-  //     });
-  //   }, options);
-  //   if (componentsRefs.current) observer.observe(componentsRefs);
-  // }, []);
+  const getRef = (currentRef) => {
+    if (currentRef === "home") {
+      homeRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else if (currentRef === "about") {
+      aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else if (currentRef === "projects") {
+      projectsRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Navbar />
+      <Navbar getRef={getRef} />
       <PageBar page={currentPage} />
       <Home
         ref={homeRef}
