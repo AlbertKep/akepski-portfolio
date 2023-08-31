@@ -4,8 +4,8 @@ export const GlobalStyle = createGlobalStyle`
 
 html {
   box-sizing: border-box;
-
-  scroll-behavior: smooth;
+  /* overflow-x: hidden; */
+  /* scroll-behavior: smooth; */
 
 }
 

@@ -9,6 +9,7 @@ export const NavbarContainer = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 1em 2em 0;
+    backdrop-filter: none;
     background-color: ${({ theme }) => theme.colors.white};
     -webkit-box-shadow: 0px 6px 9px -3px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 6px 9px -3px rgba(66, 68, 90, 1);
@@ -25,12 +26,12 @@ export const Navigation = styled.nav`
   top: 0;
   right: ${({ isOpen }) => (!isOpen ? "-100%" : 0)};
   width: 100%;
-  height: 100svh;
+  height: 100vh;
   transition: all 0.2s ease-in-out;
 
   @media only screen and (min-width: 960px) {
     position: inherit;
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: transparent;
     height: auto;
     width: max-content;
   }
@@ -43,6 +44,7 @@ export const Menu = styled.ul`
 
   @media only screen and (min-width: 960px) {
     display: flex;
+    border-left: none;
   }
 `;
 
