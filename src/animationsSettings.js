@@ -1,3 +1,5 @@
+import { stagger } from "framer-motion";
+
 export const rightMoveVariants = {
   initial: { x: -100, opacity: 0 },
   animate: {
@@ -31,3 +33,26 @@ export const horizontalMoveVariants = {
     transition: { duration: 1.2, repeatType: "mirror", repeat: Infinity },
   },
 };
+
+export const openedMenu = [
+  [
+    "nav",
+    { transform: "translateX(0%)" },
+    { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.2 },
+  ],
+  ["li", { x: [50, 0], opacity: 1 }, { delay: stagger(0.05) }],
+];
+
+export const hiddenMenu = [
+  ["li", { x: [0, 50], opacity: 0 }, { delay: stagger(0.05) }],
+  [
+    "nav",
+    { transform: "translateX(100%)" },
+    { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.2 },
+  ],
+];
+
+export const desktopMenu = [
+  ["nav", { transform: "translateX(0%)" }],
+  ["li", { opacity: 1 }],
+];

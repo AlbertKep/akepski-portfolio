@@ -24,13 +24,15 @@ export const Navigation = styled.nav`
   background-color: ${({ theme }) => theme.colors.black};
   position: fixed;
   top: 0;
-  right: ${({ isOpen }) => (!isOpen ? "-100%" : 0)};
+  /* transform: translateX(100%); */
+  /* right: ${({ isOpen }) => (!isOpen ? "-100%" : 0)}; */
   width: 100%;
   height: 100vh;
   transition: all 0.2s ease-in-out;
 
   @media only screen and (min-width: 960px) {
     position: inherit;
+    /* transform: translateX(0); */
     background-color: transparent;
     height: auto;
     width: max-content;
@@ -91,6 +93,7 @@ export const MenuLink = styled.li`
   }
 
   @media only screen and (min-width: 960px) {
+    opacity: 1;
     margin-right: 1.5em;
     align-self: baseline;
     padding-right: 0.7em;
