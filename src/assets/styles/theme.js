@@ -7,6 +7,7 @@ export const theme = {
     lightGrey: "#999999",
     darkGrey: "#1A1A1A",
     darkBlue: "#191E29",
+    errorColor: "#801414",
   },
 
   fontSize: {

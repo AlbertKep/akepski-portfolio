@@ -3,9 +3,10 @@ import { GlobalStyle } from "./assets/styles/globalStyles";
 import { theme } from "./assets/styles/theme";
 import Navbar from "./components/navbar/Navbar";
 import PageBar from "./components/pageBar/PageBar";
-import About from "./pages/about/About";
 import Home from "./pages/home/Home";
+import About from "./pages/about/About";
 import Projects from "./pages/projects/Projects";
+import Contact from "./pages/contact/Contact";
 
 import { useRef, useState } from "react";
 
@@ -51,6 +52,8 @@ const App = () => {
         updateCurrentPage={updateCurrentPage}
         data-test-id="projects"
       />
+
+      <Contact />
     </ThemeProvider>
   );
 };

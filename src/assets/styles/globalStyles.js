@@ -23,4 +23,8 @@ body {
 li {
   list-style-type: none;
 }
+
+input, textarea {
+  font-family: 'Poppins', sans-serif;
+}
 `;
