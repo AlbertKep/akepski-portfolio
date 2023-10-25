@@ -9,7 +9,10 @@ import {
   ButtonContainer,
 } from "./Contact.styled";
 
+import Modal from "../../components/modal/Modal";
+
 const Contact = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: {
       value: "",
@@ -70,7 +73,7 @@ const Contact = () => {
     if (!isValid) {
       setFormData(clone);
     }
-
+    setIsVisible((prev) => !prev);
     console.log("Evething is oke");
   };
 
@@ -130,6 +133,7 @@ const Contact = () => {
           <button>send me a message</button>
         </ButtonContainer>
       </Form>
+      {isVisible && <Modal setIsVisible={setIsVisible} />}
     </Container>
   );
 };

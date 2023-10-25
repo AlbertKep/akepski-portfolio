@@ -16,7 +16,8 @@ export const Heading = styled.h3`
 
   span:nth-child(1) {
     color: ${({ theme }) => theme.colors.lightGreen};
-    font-size: clamp(3rem, 6vw, 7rem);
+    /* font-size: clamp(3rem, 6vw, 7rem); */
+    font-size: clamp(3rem, 5.5vw + 3rem, 7rem);
     margin-right: 0.3em;
   }
 
