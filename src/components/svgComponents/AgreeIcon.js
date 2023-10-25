@@ -1,3 +1,10 @@
+import { motion } from "framer-motion";
+
+import {
+  showTheCircleVariants,
+  drawTheLineVariants,
+} from "../../animationsSettings";
+
 const AgreeIcon = () => {
   return (
     <>
@@ -7,44 +14,32 @@ const AgreeIcon = () => {
         height="100"
         viewBox="0 0 100 100"
       >
-        <g
+        <motion.g
           id="Ellipse_3"
           data-name="Ellipse 3"
           fill="#fff"
           stroke="#01c38d"
           stroke-width="3"
+          variants={showTheCircleVariants}
+          initial="hidden"
+          animate="visible"
         >
           <circle cx="50" cy="50" r="50" stroke="none" />
           <circle cx="50" cy="50" r="48.5" fill="none" />
-        </g>
-        <g
-          id="Group_766"
-          data-name="Group 766"
-          transform="translate(-170.25 -461.5)"
-        >
-          <line
-            id="Line_265"
-            data-name="Line 265"
-            x2="12"
-            y2="12"
-            transform="translate(203 513.5)"
-            fill="none"
-            stroke="#01c38d"
-            stroke-linecap="round"
-            stroke-width="3"
-          />
-          <line
-            id="Line_266"
-            data-name="Line 266"
-            y1="28"
-            x2="22"
-            transform="translate(215.5 497.5)"
-            fill="none"
-            stroke="#01c38d"
-            stroke-linecap="round"
-            stroke-width="3"
-          />
-        </g>
+        </motion.g>
+        <motion.path
+          id="Path_1975"
+          data-name="Path 1975"
+          d="M0,0,12.377,15.318,36-15.5"
+          transform="matrix(1, 0.017, -0.017, 1, 32, 49.777)"
+          fill="none"
+          stroke="#01c38d"
+          stroke-linecap="round"
+          stroke-width="3"
+          variants={drawTheLineVariants}
+          initial="hidden"
+          animate="visible"
+        />
       </svg>
     </>
   );
