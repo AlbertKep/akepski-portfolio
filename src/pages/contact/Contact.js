@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+// import emailjs from "@emailjs/browser";
 import {
   Container,
   Heading,
@@ -11,7 +12,10 @@ import {
 
 import Modal from "../../components/modal/Modal";
 
+import { sendEmail, requestError } from "../../services/email";
+
 const Contact = () => {
+  const formRef = useRef();
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: {
@@ -66,15 +70,24 @@ const Contact = () => {
     return { isValid, clone };
   };
 
+  const resetFormFields = () => {
+    // form clone
+    const form = { ...formData };
+    // convert object to array
+    Object.entries(form).forEach((field) => (field[1].value = ""));
+    setFormData({ ...form });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const { isValid, clone } = isFormValid(formData);
-    console.log(isValid);
     if (!isValid) {
       setFormData(clone);
+    } else {
+      setIsVisible((prev) => !prev);
+      resetFormFields();
+      sendEmail(formRef.current);
     }
-    setIsVisible((prev) => !prev);
-    console.log("Evething is oke");
   };
 
   return (
@@ -84,7 +97,7 @@ const Contact = () => {
         <span>what are you waiting for?</span>
       </Heading>
 
-      <Form noValidate onSubmit={handleSubmit}>
+      <Form noValidate ref={formRef} onSubmit={handleSubmit}>
         <InputsContainer>
           <InputController>
             <label htmlFor="name">Name</label>
@@ -133,7 +146,9 @@ const Contact = () => {
           <button>send me a message</button>
         </ButtonContainer>
       </Form>
-      {isVisible && <Modal setIsVisible={setIsVisible} />}
+      {isVisible && (
+        <Modal setIsVisible={setIsVisible} isError={requestError} />
+      )}
     </Container>
   );
 };
