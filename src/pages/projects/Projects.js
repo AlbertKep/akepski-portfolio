@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useInView } from "framer-motion";
-import examplePicture from "../../assets/images/pablo-heimplatz-ZODcBkEohk8-unsplash.jpg";
+import { useQuery } from "@apollo/client";
+import { PROJECTS } from "../../services/queries";
 
 import {
   ProjectsContainer,
@@ -13,66 +14,51 @@ import {
   Description,
 } from "./Projects.styled";
 
-const Projects = (props, ref) => {
+const Projects = ({ updateCurrentPage, projectsData }, ref) => {
   const isInView = useInView(ref, {
-    margin: "-400px",
+    margin: "-450px",
   });
 
+  const { loading, error, data } = useQuery(PROJECTS);
+
   useEffect(() => {
-    if (isInView) props.updateCurrentPage("03");
+    if (isInView) updateCurrentPage("03");
+    console.log("projects", isInView);
   }, [isInView]);
 
   return (
     <ProjectsContainer ref={ref} data-component-name="projects">
-      <div>
-        <Heading>
-          <span>what</span> <br />I did
-        </Heading>
-      </div>
-      <ProjectsList>
-        <Project>
-          <ImageContainer>
-            <img src={examplePicture} alt="project" />
-          </ImageContainer>
-          <ContentContainer>
-            <Name>Tic tac toe</Name>
-            <Description>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit sapiente expedita, quidem eius hic aspernatur!
-              Repellat est incidunt ipsum. Porro corporis consectetur dolor
-              inventore quisquam rem temporibus officia ab hic.
-            </Description>
-          </ContentContainer>
-        </Project>
-        <Project>
-          <ImageContainer>
-            <img src={examplePicture} alt="project" />
-          </ImageContainer>
-          <ContentContainer>
-            <Name>Tic tac toe</Name>
-            <Description>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit sapiente expedita, quidem eius hic aspernatur!
-              Repellat est incidunt ipsum. Porro corporis consectetur dolor
-              inventore quisquam rem temporibus officia ab hic.
-            </Description>
-          </ContentContainer>
-        </Project>
-        <Project>
-          <ImageContainer>
-            <img src={examplePicture} alt="project" />
-          </ImageContainer>
-          <ContentContainer>
-            <Name>Tic tac toe</Name>
-            <Description>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit sapiente expedita, quidem eius hic aspernatur!
-              Repellat est incidunt ipsum. Porro corporis consectetur dolor
-              inventore quisquam rem temporibus officia ab hic.
-            </Description>
-          </ContentContainer>
-        </Project>
-      </ProjectsList>
+      {projectsData && (
+        <>
+          <div>
+            <Heading>
+              <span>{projectsData.title}</span> <br />
+              {projectsData.subtitle}
+            </Heading>
+          </div>
+
+          <ProjectsList>
+            {loading && <p>Loading...</p>}
+            {error && <pre>{error.message}</pre>}
+
+            {data &&
+              data.projects.data.map((project) => (
+                <Project key={project.attributes.title}>
+                  <ImageContainer>
+                    <img
+                      src={`http://localhost:1337${project.attributes.image.data.attributes.url}`}
+                      alt={project.attributes.image.data.attributes.name}
+                    />
+                  </ImageContainer>
+                  <ContentContainer>
+                    <Name>{project.attributes.title}</Name>
+                    <Description>{project.attributes.description}</Description>
+                  </ContentContainer>
+                </Project>
+              ))}
+          </ProjectsList>
+        </>
+      )}
     </ProjectsContainer>
   );
 };

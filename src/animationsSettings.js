@@ -43,7 +43,7 @@ export const drawTheLineVariants = {
     opacity: 1,
     pathLength: 1,
     transition: {
-      duration: 0.7,
+      duration: 0.4,
       ease: "easeInOut",
     },
   },
@@ -56,7 +56,7 @@ export const showTheCircleVariants = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: 0.4,
       ease: "easeInOut",
     },
   },

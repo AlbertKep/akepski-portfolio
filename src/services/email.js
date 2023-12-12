@@ -7,7 +7,7 @@ export const sendEmail = async (ref) => {
       process.env.REACT_APP_SERVICE_ID,
       process.env.REACT_APP_TEMPLATE_ID,
       ref,
-      process.env.REACT_APP_PUBLIC_KE
+      process.env.REACT_APP_PUBLIC_KEY
     );
     requestError = false;
   } catch (error) {

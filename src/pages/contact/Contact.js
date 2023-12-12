@@ -1,5 +1,6 @@
-import { useState, useRef } from "react";
-// import emailjs from "@emailjs/browser";
+import React, { useState, useRef, useEffect } from "react";
+import { useInView } from "framer-motion";
+
 import {
   Container,
   Heading,
@@ -14,8 +15,7 @@ import Modal from "../../components/modal/Modal";
 
 import { sendEmail, requestError } from "../../services/email";
 
-const Contact = () => {
-  const formRef = useRef();
+const Contact = ({ updateCurrentPage, contactData }, ref) => {
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: {
@@ -31,6 +31,15 @@ const Contact = () => {
       error: null,
     },
   });
+
+  const isInView = useInView(ref, { margin: "-450px" });
+
+  useEffect(() => {
+    if (isInView) updateCurrentPage("04");
+  }, [isInView]);
+
+  const formRef = useRef();
+
   const changeHandler = (e) => {
     const { value, name } = e.target;
     setFormData((prev) => ({ ...prev, [name]: { value, error: null } }));
@@ -91,66 +100,70 @@ const Contact = () => {
   };
 
   return (
-    <Container>
-      <Heading>
-        <span>soo...</span>
-        <span>what are you waiting for?</span>
-      </Heading>
+    <Container ref={ref} data-component-name="contact">
+      {contactData && (
+        <>
+          <Heading>
+            <span>{contactData.title}</span>
+            <span>{contactData.subtitle}</span>
+          </Heading>
 
-      <Form noValidate ref={formRef} onSubmit={handleSubmit}>
-        <InputsContainer>
-          <InputController>
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              value={formData.name.value}
-              onChange={changeHandler}
-              required
-            />
-            {formData.name.error && (
-              <ErrorInfo>{formData.name.error}</ErrorInfo>
-            )}
-          </InputController>
-          <InputController>
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              value={formData.email.value}
-              onChange={changeHandler}
-            />
-            {formData.email.error && (
-              <ErrorInfo>{formData.email.error}</ErrorInfo>
-            )}
-          </InputController>
-          <InputController>
-            <label htmlFor="message">Message</label>
-            <textarea
-              name="message"
-              id="message"
-              rows="8"
-              cols="25"
-              value={formData.message.value}
-              onChange={changeHandler}
-            />
-            {formData.message.error && (
-              <ErrorInfo>{formData.message.error}</ErrorInfo>
-            )}
-          </InputController>
-        </InputsContainer>
+          <Form noValidate ref={formRef} onSubmit={handleSubmit}>
+            <InputsContainer>
+              <InputController>
+                <label htmlFor="name">Name</label>
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  value={formData.name.value}
+                  onChange={changeHandler}
+                  required
+                />
+                {formData.name.error && (
+                  <ErrorInfo>{formData.name.error}</ErrorInfo>
+                )}
+              </InputController>
+              <InputController>
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={formData.email.value}
+                  onChange={changeHandler}
+                />
+                {formData.email.error && (
+                  <ErrorInfo>{formData.email.error}</ErrorInfo>
+                )}
+              </InputController>
+              <InputController>
+                <label htmlFor="message">Message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="8"
+                  cols="25"
+                  value={formData.message.value}
+                  onChange={changeHandler}
+                />
+                {formData.message.error && (
+                  <ErrorInfo>{formData.message.error}</ErrorInfo>
+                )}
+              </InputController>
+            </InputsContainer>
 
-        <ButtonContainer>
-          <button>send me a message</button>
-        </ButtonContainer>
-      </Form>
-      {isVisible && (
-        <Modal setIsVisible={setIsVisible} isError={requestError} />
+            <ButtonContainer>
+              <button>send me a message</button>
+            </ButtonContainer>
+          </Form>
+          {isVisible && (
+            <Modal setIsVisible={setIsVisible} isError={requestError} />
+          )}
+        </>
       )}
     </Container>
   );
 };
 
-export default Contact;
+export default React.forwardRef(Contact);

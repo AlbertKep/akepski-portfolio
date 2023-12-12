@@ -32,6 +32,7 @@ export const ContentController = styled.div`
   p {
     font-size: clamp(1rem, 1.25vw, 1.25rem);
     margin-bottom: 1.5em;
+    text-align: center;
   }
 
   button {

@@ -34,16 +34,9 @@ export const Background = styled.div`
 
 export const Heading = styled(motion.h1)`
   text-transform: uppercase;
-  font-size: clamp(3rem, 2.5vw + 1rem, 6rem);
-  line-height: clamp(1.8em, 4.5vw + 1em, 2em);
-  font-weight: 500;
+  font-size: clamp(4rem, 3.5vw + 1rem, 7rem);
+  font-weight: 800;
   margin: 0;
-
-  span {
-    font-size: clamp(6rem, 3.5vw, 12rem);
-    display: block;
-    font-weight: 800;
-  }
 `;
 
 export const Subheading = styled(motion.h3)`

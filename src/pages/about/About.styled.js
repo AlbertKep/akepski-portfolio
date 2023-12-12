@@ -29,27 +29,19 @@ export const Wrapper = styled.div`
   }
 `;
 export const Heading = styled.h2`
-  font-size: clamp(3rem, 3vw + 1rem, 6rem);
+  font-size: clamp(2.5rem, 4vw + 1rem, 6.5rem);
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 800;
   line-height: 1.3em;
+  letter-spacing: 0.1em;
   margin-bottom: 0;
-
-  span {
-    display: block;
-    font-size: clamp(5.5rem, 7vw + 1rem, 6.5rem);
-    text-transform: uppercase;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-  }
 `;
 
 export const Subheading = styled.h3`
   text-align: center;
   font-size: clamp(2rem, 3vw + 1rem, 3rem);
-  font-weight: 500;
   margin-top: 0;
   letter-spacing: -0.01em;
 `;
@@ -62,6 +54,7 @@ export const Box = styled.div`
   margin: 2.5em auto;
   width: 100%;
   max-width: 350px;
+  min-height: 250px;
 
   &::after {
     position: absolute;

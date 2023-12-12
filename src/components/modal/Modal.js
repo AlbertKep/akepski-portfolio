@@ -1,5 +1,6 @@
 import { Container, ContentController } from "./Modal.styled";
-import AgreeIcon from "../../components/svgComponents/AgreeIcon";
+import AgreeIcon from "../svgComponents/AgreeIcon";
+import DisagreeIcon from "../svgComponents/Disagree";
 
 const Modal = ({ setIsVisible, isError }) => {
   const handleClick = () => setIsVisible((prev) => !prev);
@@ -7,12 +8,12 @@ const Modal = ({ setIsVisible, isError }) => {
     <Container>
       <ContentController>
         <div>
-          <AgreeIcon />
+          {!isError ? <AgreeIcon /> : <DisagreeIcon />}
 
           <p>
             {!isError
               ? "The Message has been sent!"
-              : "something went wrong, please try again later!"}
+              : "Something went wrong, please try again later!"}
           </p>
           <button onClick={handleClick}>ok</button>
         </div>

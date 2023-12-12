@@ -20,7 +20,7 @@ const data = [
   { name: "home", isActive: "active" },
   { name: "about", isActive: "" },
   { name: "projects", isActive: "" },
-  { name: "contact me", isActive: "" },
+  { name: "contact", isActive: "" },
 ];
 
 const Navbar = ({ getRef }) => {
