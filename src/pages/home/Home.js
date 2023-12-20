@@ -24,6 +24,7 @@ const Home = ({ updateCurrentPage, homeData }, ref) => {
 
   useEffect(() => {
     if (isInView) updateCurrentPage("01");
+    console.log("home", isInView);
   }, [isInView]);
 
   return (
@@ -46,7 +47,6 @@ const Home = ({ updateCurrentPage, homeData }, ref) => {
               initial="initial"
               animate="animate"
             >
-              {/* I'm Front-End Developer and this is my portfolio */}
               {homeData.subtitle}
             </Subheading>
             <Text
@@ -56,9 +56,6 @@ const Home = ({ updateCurrentPage, homeData }, ref) => {
               animate="animate"
             >
               {homeData.description}
-              {/* {data.home.data.attributes.description.text} */}
-
-              {/* {data.home.data.attributes.description} */}
             </Text>
           </ContentContainer>
           <ImageContainer>

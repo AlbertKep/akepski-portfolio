@@ -32,7 +32,7 @@ const Contact = ({ updateCurrentPage, contactData }, ref) => {
     },
   });
 
-  const isInView = useInView(ref, { margin: "-450px" });
+  const isInView = useInView(ref, { margin: "-400px" });
 
   useEffect(() => {
     if (isInView) updateCurrentPage("04");

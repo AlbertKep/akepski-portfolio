@@ -18,10 +18,12 @@ import {
 } from "./About.styled";
 
 const About = ({ updateCurrentPage, aboutData }, ref) => {
-  const isInView = useInView(ref, { margin: "-450px" });
+  const isInView = useInView(ref, { margin: "-400px" });
 
   useEffect(() => {
     if (isInView) updateCurrentPage("02");
+    console.log("about", isInView);
+    console.log(ref);
   }, [isInView]);
 
   return (

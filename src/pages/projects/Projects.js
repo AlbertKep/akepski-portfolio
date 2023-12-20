@@ -16,14 +16,15 @@ import {
 
 const Projects = ({ updateCurrentPage, projectsData }, ref) => {
   const isInView = useInView(ref, {
-    margin: "-450px",
+    margin: "-400px",
   });
 
   const { loading, error, data } = useQuery(PROJECTS);
 
   useEffect(() => {
-    if (isInView) updateCurrentPage("03");
-    console.log("projects", isInView);
+    if (isInView) {
+      updateCurrentPage("03");
+    }
   }, [isInView]);
 
   return (
