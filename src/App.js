@@ -7,6 +7,7 @@ import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Projects from "./pages/projects/Projects";
 import Contact from "./pages/contact/Contact";
+import Loader from "./components/loader/Loader";
 
 import { useRef, useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
@@ -69,7 +70,7 @@ const App = () => {
     filteredData();
   }, [data]);
 
-  if (loading) return "Loading...";
+  if (loading) return <Loader />;
   if (error) return <pre>{error.message}</pre>;
 
   return (

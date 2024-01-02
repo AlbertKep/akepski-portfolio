@@ -62,6 +62,20 @@ export const showTheCircleVariants = {
   },
 };
 
+export const loaderVariants = {
+  initial: 10,
+  animate: (i) => ({
+    y: -10,
+
+    transition: {
+      delay: i * 0.1,
+      ease: "easeInOut",
+      repeat: Infinity,
+      repeatType: "mirror",
+    },
+  }),
+};
+
 export const openedMenu = [
   [
     "nav",

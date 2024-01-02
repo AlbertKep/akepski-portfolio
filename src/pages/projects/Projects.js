@@ -13,6 +13,7 @@ import {
   Name,
   Description,
 } from "./Projects.styled";
+import Loader from "../../components/loader/Loader";
 
 const Projects = ({ updateCurrentPage, projectsData }, ref) => {
   const isInView = useInView(ref, {
@@ -39,7 +40,7 @@ const Projects = ({ updateCurrentPage, projectsData }, ref) => {
           </div>
 
           <ProjectsList>
-            {loading && <p>Loading...</p>}
+            {loading && <Loader color />}
             {error && <pre>{error.message}</pre>}
 
             {data &&
