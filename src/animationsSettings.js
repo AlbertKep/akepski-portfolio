@@ -1,20 +1,34 @@
 import { stagger } from "framer-motion";
 
-export const rightMoveVariants = {
-  initial: { x: -100, opacity: 0 },
+export const xMoveVariants = {
+  initial: (i) => ({
+    opacity: 0,
+    x: i,
+  }),
+
   animate: {
-    x: 0,
     opacity: 1,
-    transition: { duration: 0.8, delay: 0.3 },
+    x: 0,
+    transition: {
+      duration: 0.8,
+      delay: 0.3,
+    },
   },
 };
 
-export const leftMoveVariants = {
-  initial: { x: 100, opacity: 0 },
+export const yMoveVariants = {
+  initial: (i) => ({
+    opacity: 0,
+    y: i,
+  }),
+
   animate: {
-    x: 0,
     opacity: 1,
-    transition: { duration: 0.8, delay: 0.3 },
+    y: 0,
+    transition: {
+      duration: 1,
+      delay: 0.5,
+    },
   },
 };
 

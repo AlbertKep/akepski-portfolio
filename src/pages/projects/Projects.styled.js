@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const ProjectsContainer = styled.section`
   background-color: ${({ theme }) => theme.colors.darkBlue};
@@ -12,15 +13,17 @@ export const ProjectsContainer = styled.section`
 
 export const Heading = styled.h2`
   margin: 0;
-  color: ${({ theme }) => theme.colors.white};
-  font-size: clamp(2rem, 4.5vw + 2rem, 5rem);
 
+  span:first-child {
+    color: ${({ theme }) => theme.colors.white};
+    margin: 0;
+  }
   span {
-    font-size: clamp(3rem, 5.5vw + 3rem, 7rem);
+    display: block;
     color: ${({ theme }) => theme.colors.lightGreen};
+    font-size: clamp(3rem, 4.5vw + 2rem, 7rem);
 
     @media only screen and (min-width: 700px) {
-      display: block;
       text-align: right;
     }
   }
@@ -31,8 +34,13 @@ export const Heading = styled.h2`
     text-align: center;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    line-height: 0.55em;
+    /* line-height: 2em; */
     padding: 1em;
+    margin-left: 1.5em;
+
+    span:first-child {
+      line-height: 0.55em;
+    }
   }
 `;
 

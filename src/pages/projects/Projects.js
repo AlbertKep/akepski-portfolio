@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import { useInView } from "framer-motion";
+import { useInView, motion } from "framer-motion";
 import { useQuery } from "@apollo/client";
 import { PROJECTS } from "../../services/queries";
+import useCheckWidth from "../../hooks/useCheckWidth";
+import { xMoveVariants, yMoveVariants } from "../../animationsSettings";
 
 import {
   ProjectsContainer,
@@ -21,6 +23,7 @@ const Projects = ({ updateCurrentPage, projectsData }, ref) => {
   });
 
   const { loading, error, data } = useQuery(PROJECTS);
+  const currentWidth = useCheckWidth();
 
   useEffect(() => {
     if (isInView) {
@@ -34,8 +37,24 @@ const Projects = ({ updateCurrentPage, projectsData }, ref) => {
         <>
           <div>
             <Heading>
-              <span>{projectsData.title}</span> <br />
-              {projectsData.subtitle}
+              <motion.span
+                custom={100}
+                variants={currentWidth > 960 ? yMoveVariants : xMoveVariants}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+              >
+                {projectsData.title}
+              </motion.span>
+              <motion.span
+                custom={-100}
+                variants={currentWidth > 960 ? yMoveVariants : xMoveVariants}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+              >
+                {projectsData.subtitle}
+              </motion.span>
             </Heading>
           </div>
 

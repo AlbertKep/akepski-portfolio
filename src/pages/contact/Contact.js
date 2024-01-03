@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { xMoveVariants } from "../../animationsSettings";
 
 import {
   Container,
@@ -104,8 +105,24 @@ const Contact = ({ updateCurrentPage, contactData }, ref) => {
       {contactData && (
         <>
           <Heading>
-            <span>{contactData.title}</span>
-            <span>{contactData.subtitle}</span>
+            <motion.span
+              custom={-100}
+              variants={xMoveVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
+              {contactData.title}
+            </motion.span>
+            <motion.span
+              custom={100}
+              variants={xMoveVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
+              {contactData.subtitle}
+            </motion.span>
           </Heading>
 
           <Form noValidate ref={formRef} onSubmit={handleSubmit}>

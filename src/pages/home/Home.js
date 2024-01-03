@@ -7,7 +7,7 @@ import { Text } from "../../components/templates/Text";
 
 import Person from "../../components/svgComponents/Person";
 
-import { rightMoveVariants, leftMoveVariants } from "../../animationsSettings";
+import { xMoveVariants } from "../../animationsSettings";
 
 import {
   ContentContainer,
@@ -24,7 +24,6 @@ const Home = ({ updateCurrentPage, homeData }, ref) => {
 
   useEffect(() => {
     if (isInView) updateCurrentPage("01");
-    console.log("home", isInView);
   }, [isInView]);
 
   return (
@@ -36,14 +35,16 @@ const Home = ({ updateCurrentPage, homeData }, ref) => {
               <img src={bg} alt="background" />
             </Background>
             <Heading
-              variants={rightMoveVariants}
+              custom={100}
+              variants={xMoveVariants}
               initial="initial"
               animate="animate"
             >
               {homeData.title}
             </Heading>
             <Subheading
-              variants={leftMoveVariants}
+              custom={-100}
+              variants={xMoveVariants}
               initial="initial"
               animate="animate"
             >
@@ -51,7 +52,8 @@ const Home = ({ updateCurrentPage, homeData }, ref) => {
             </Subheading>
             <Text
               as={motion.p}
-              variants={leftMoveVariants}
+              custom={100}
+              variants={xMoveVariants}
               initial="initial"
               animate="animate"
             >
