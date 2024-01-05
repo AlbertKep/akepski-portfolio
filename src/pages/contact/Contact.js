@@ -106,7 +106,7 @@ const Contact = ({ updateCurrentPage, contactData }, ref) => {
         <>
           <Heading>
             <motion.span
-              custom={-100}
+              custom={-50}
               variants={xMoveVariants}
               initial="initial"
               whileInView="animate"
@@ -115,7 +115,7 @@ const Contact = ({ updateCurrentPage, contactData }, ref) => {
               {contactData.title}
             </motion.span>
             <motion.span
-              custom={100}
+              custom={50}
               variants={xMoveVariants}
               initial="initial"
               whileInView="animate"

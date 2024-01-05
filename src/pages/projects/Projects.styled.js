@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
 export const ProjectsContainer = styled.section`
   background-color: ${({ theme }) => theme.colors.darkBlue};
   padding: 5em 2em;
+  overflow: hidden;
 
   @media only screen and (min-width: 700px) {
     display: flex;
