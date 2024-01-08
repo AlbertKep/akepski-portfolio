@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const AboutContainer = styled.section`
   background-color: ${({ theme }) => theme.colors.lightGreen};
@@ -54,7 +55,7 @@ export const Box = styled.div`
   margin: 2.5em auto;
   width: 100%;
   max-width: 350px;
-  min-height: 250px;
+  min-height: 300px;
 
   &::after {
     position: absolute;
@@ -108,13 +109,13 @@ export const RightBox = styled(Box)`
 `;
 
 export const TechnologiesList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
   align-items: center;
+  justify-items: center;
   padding: 1em;
 `;
-export const Technology = styled.li`
+export const Technology = styled(motion.li)`
   padding: 0.5em;
 `;
 

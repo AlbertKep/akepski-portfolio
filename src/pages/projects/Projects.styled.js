@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const ProjectsContainer = styled.section`
   background-color: ${({ theme }) => theme.colors.darkBlue};
@@ -34,7 +35,6 @@ export const Heading = styled.h2`
     text-align: center;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    /* line-height: 2em; */
     padding: 1em;
     margin-left: 1.5em;
 
@@ -46,13 +46,21 @@ export const Heading = styled.h2`
 
 export const ProjectsList = styled.ul`
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
   width: 100%;
   justify-content: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  align-items: center;
+  justify-items: center;
+
+  @media only screen and (min-width: 1400px) {
+    gap: 15px;
+    padding-left: 2em;
+  }
 `;
 
-export const Project = styled.li`
+export const Project = styled(motion.li)`
   border-radius: 10px;
   margin: 1em;
   transition: all 0.2s;

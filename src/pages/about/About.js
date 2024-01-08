@@ -16,14 +16,13 @@ import {
   Technology,
   ImageContainer,
 } from "./About.styled";
+import { showUpVariants } from "../../animationsSettings";
 
 const About = ({ updateCurrentPage, aboutData }, ref) => {
   const isInView = useInView(ref, { margin: "-400px" });
 
   useEffect(() => {
     if (isInView) updateCurrentPage("02");
-    console.log("about", isInView);
-    console.log(ref);
   }, [isInView]);
 
   return (
@@ -38,8 +37,15 @@ const About = ({ updateCurrentPage, aboutData }, ref) => {
             </Wrapper>
             <LeftBox>
               <TechnologiesList>
-                {aboutData.technologies?.map((icon) => (
-                  <Technology key={icon.attributes.name}>
+                {aboutData.technologies?.map((icon, index) => (
+                  <Technology
+                    key={icon.attributes.name}
+                    custom={index}
+                    variants={showUpVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
                     <img
                       src={`http://localhost:1337${icon.attributes.url}`}
                       alt={icon.attributes.name}
@@ -51,8 +57,15 @@ const About = ({ updateCurrentPage, aboutData }, ref) => {
 
             <RightBox>
               <TechnologiesList>
-                {aboutData.nextTechnologies?.map((icon) => (
-                  <Technology key={icon.attributes.name}>
+                {aboutData.nextTechnologies?.map((icon, index) => (
+                  <Technology
+                    key={icon.attributes.name}
+                    custom={index}
+                    variants={showUpVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
                     <img
                       src={`http://localhost:1337${icon.attributes.url}`}
                       alt={icon.attributes.name}

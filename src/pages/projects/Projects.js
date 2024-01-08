@@ -3,7 +3,11 @@ import { useInView, motion } from "framer-motion";
 import { useQuery } from "@apollo/client";
 import { PROJECTS } from "../../services/queries";
 import useCheckWidth from "../../hooks/useCheckWidth";
-import { xMoveVariants, yMoveVariants } from "../../animationsSettings";
+import {
+  xMoveVariants,
+  yMoveVariants,
+  showUpVariants,
+} from "../../animationsSettings";
 
 import {
   ProjectsContainer,
@@ -63,8 +67,15 @@ const Projects = ({ updateCurrentPage, projectsData }, ref) => {
             {error && <pre>{error.message}</pre>}
 
             {data &&
-              data.projects.data.map((project) => (
-                <Project key={project.attributes.title}>
+              data.projects.data.map((project, index) => (
+                <Project
+                  key={project.attributes.title}
+                  custom={index}
+                  variants={showUpVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
                   <ImageContainer>
                     <img
                       src={`http://localhost:1337${project.attributes.image.data.attributes.url}`}
