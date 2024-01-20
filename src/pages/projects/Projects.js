@@ -3,6 +3,7 @@ import { useInView, motion } from "framer-motion";
 import { useQuery } from "@apollo/client";
 import { PROJECTS } from "../../services/queries";
 import useCheckWidth from "../../hooks/useCheckWidth";
+
 import {
   xMoveVariants,
   yMoveVariants,
@@ -22,9 +23,7 @@ import {
 import Loader from "../../components/loader/Loader";
 
 const Projects = ({ updateCurrentPage, projectsData }, ref) => {
-  const isInView = useInView(ref, {
-    margin: "-400px",
-  });
+  const isInView = useInView(ref, { margin: "-50%" });
 
   const { loading, error, data } = useQuery(PROJECTS);
   const currentWidth = useCheckWidth();

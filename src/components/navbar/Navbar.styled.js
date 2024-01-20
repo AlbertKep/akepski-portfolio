@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const NavbarContainer = styled.div`
+  background-color: ${({ theme }) => theme.state.navigationBgColor};
+  transition: all 0.5s ease-out;
+
   position: sticky;
   top: 0;
   z-index: 999;
@@ -10,7 +13,6 @@ export const NavbarContainer = styled.div`
     justify-content: space-between;
     padding: 1em 2em 0;
     backdrop-filter: none;
-    background-color: ${({ theme }) => theme.colors.white};
     -webkit-box-shadow: 0px 6px 9px -3px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 6px 9px -3px rgba(66, 68, 90, 1);
     box-shadow: 0px 6px 9px -3px rgba(66, 68, 90, 1);
@@ -21,7 +23,8 @@ export const Navigation = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.state.navigationBgColor};
+
   position: fixed;
   top: 0;
   /* transform: translateX(100%); */
@@ -31,9 +34,10 @@ export const Navigation = styled.nav`
   transition: all 0.2s ease-in-out;
 
   @media only screen and (min-width: 960px) {
+    background-color: transparent;
     position: inherit;
     /* transform: translateX(0); */
-    background-color: transparent;
+    /* background-color: transparent; */
     height: auto;
     width: max-content;
   }
@@ -42,7 +46,7 @@ export const Navigation = styled.nav`
 export const Menu = styled.ul`
   margin: 0;
   padding: 1.5em 1em;
-  border-left: ${({ theme }) => `2px solid ${theme.colors.white}`};
+  border-left: ${({ theme }) => `2px solid ${theme.state.pageBarColor}`};
 
   @media only screen and (min-width: 960px) {
     display: flex;
@@ -58,9 +62,9 @@ export const MenuLink = styled.li`
   text-align: center;
   cursor: pointer;
   color: ${({ theme, isActiveLink }) =>
-    isActiveLink ? theme.colors.black : theme.colors.white};
+    isActiveLink ? theme.state.activeLinkFontColor : theme.state.linkFontColor};
   background-color: ${({ theme, isActiveLink }) =>
-    isActiveLink ? theme.colors.white : theme.colors.black};
+    isActiveLink ? theme.state.activelinkBgColor : `transparent`};
   font-size: 1.3rem;
   border-radius: 5px;
 
@@ -74,22 +78,8 @@ export const MenuLink = styled.li`
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
     border-right: 10px solid;
-    border-right-color: ${({ isActiveLink, theme }) =>
-      isActiveLink && theme ? theme.colors.white : theme.colors.black};
-  }
-
-  &:hover {
-    background-color: ${({ theme, isActiveLink }) =>
-      isActiveLink || !isActiveLink ? theme.colors.white : theme.colors.black};
-    color: ${({ theme, isActiveLink }) =>
-      isActiveLink || !isActiveLink ? theme.colors.black : theme.colors.white};
-
-    &::after {
-      border-right-color: ${({ isActiveLink, theme }) =>
-        isActiveLink || !isActiveLink
-          ? theme.colors.white
-          : theme.colors.black};
-    }
+    border-right-color: ${({ theme, isActiveLink }) =>
+      isActiveLink ? theme.state.activelinkBgColor : `transparent`};
   }
 
   @media only screen and (min-width: 960px) {
@@ -98,34 +88,28 @@ export const MenuLink = styled.li`
     align-self: baseline;
     padding-right: 0.7em;
     padding-left: 0.7em;
-    color: ${({ theme, isActiveLink }) =>
-      isActiveLink ? theme.colors.white : theme.colors.black};
-    background-color: ${({ theme, isActiveLink }) =>
-      isActiveLink ? theme.colors.black : theme.colors.white};
 
     &::after {
       left: 10px;
       bottom: -10px;
       transform: rotateY(150deg);
-      border-right-color: ${({ isActiveLink, theme }) =>
-        isActiveLink && theme ? theme.colors.black : theme.colors.white};
     }
 
     &:hover {
       background-color: ${({ theme, isActiveLink }) =>
         isActiveLink || !isActiveLink
-          ? theme.colors.black
-          : theme.colors.white};
+          ? theme.state.activelinkBgColor
+          : `transparent`};
       color: ${({ theme, isActiveLink }) =>
         isActiveLink || !isActiveLink
-          ? theme.colors.white
-          : theme.colors.black};
+          ? theme.state.activeLinkFontColor
+          : theme.colors.linkFontColor};
 
       &::after {
         border-right-color: ${({ isActiveLink, theme }) =>
           isActiveLink || !isActiveLink
-            ? theme.colors.black
-            : theme.colors.white};
+            ? theme.state.activelinkBgColor
+            : `transparent`};
       }
     }
   }

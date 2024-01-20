@@ -18,12 +18,11 @@ import {
 } from "./Home.styled";
 
 const Home = ({ updateCurrentPage, homeData }, ref) => {
-  const isInView = useInView(ref, {
-    margin: "-400px",
-  });
+  const isInView = useInView(ref, { margin: "-50%" });
 
   useEffect(() => {
     if (isInView) updateCurrentPage("01");
+    console.log(isInView);
   }, [isInView]);
 
   return (

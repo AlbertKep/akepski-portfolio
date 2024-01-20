@@ -90,6 +90,17 @@ export const loaderVariants = {
   }),
 };
 
+export const showUpVariants = {
+  hidden: { opacity: 0 },
+  visible: (i) => ({
+    opacity: 1,
+    transition: {
+      delay: i * 0.2,
+      ease: "easeIn",
+    },
+  }),
+};
+
 export const openedMenu = [
   [
     "nav",

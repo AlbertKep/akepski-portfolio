@@ -1,16 +1,17 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { useEffect, useState } from "react";
 
 const Container = styled.div`
   display: none;
 
   @media only screen and (min-width: 960px) {
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.state.pageBarBackgroundColor};
     display: block;
     position: fixed;
     top: 30%;
     right: 80px;
     height: 400px;
+    transition: all 0.5s ease-out;
   }
 `;
 
@@ -24,7 +25,9 @@ const Bar = styled.div`
 const Page = styled.div`
   position: absolute;
   height: calc(400px / 4);
-  background-color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.state.pageBarColor};
+  color: ${({ theme }) => theme.state.pageBarColor};
+
   border-radius: 10px;
 
   top: 0;
@@ -40,6 +43,7 @@ const Page = styled.div`
 
 const PageBar = ({ page }) => {
   const [translate, setTranslate] = useState(0);
+  const theme = useTheme();
 
   useEffect(() => {
     const checkHeight = () => {
@@ -61,10 +65,19 @@ const PageBar = ({ page }) => {
   }, [translate]);
 
   return (
-    <Container>
+    <Container
+      bgColor={page === "03" ? theme.colors.white : theme.colors.lightGrey}
+    >
       <Bar>
-        <Page translate={translate}>
+        <Page
+          translate={translate}
+          bgColor={page === "03" ? theme.colors.lightGreen : theme.colors.black}
+          fontColor={
+            page === "03" ? theme.colors.lightGreen : theme.colors.black
+          }
+        >
           <span>{page}</span>
+          {/* {theme.colors.lightGreen} */}
         </Page>
       </Bar>
     </Container>

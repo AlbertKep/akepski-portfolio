@@ -19,7 +19,7 @@ import {
 import { showUpVariants } from "../../animationsSettings";
 
 const About = ({ updateCurrentPage, aboutData }, ref) => {
-  const isInView = useInView(ref, { margin: "-400px" });
+  const isInView = useInView(ref, { margin: "-50%" });
 
   useEffect(() => {
     if (isInView) updateCurrentPage("02");
