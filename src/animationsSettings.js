@@ -101,6 +101,24 @@ export const showUpVariants = {
   }),
 };
 
+// hamburger icon opened/closed
+export const pathTopVariants = {
+  closed: { d: "M0 20L60 20" },
+  opened: { d: "M 5 10 L 50 50" },
+};
+
+export const pathMiddleVariants = {
+  closed: { x: 0 },
+  open: { x: -100 },
+};
+
+export const pathBottomVariants = {
+  increaseWidth: { d: "M 0 40 L60 40" },
+  decreaseWidth: { d: "M 0 40 L40 40" },
+  closed: { d: "M 0 40 L 40 40" },
+  opened: { d: "M 5 50 L 50 10" },
+};
+
 export const openedMenu = [
   [
     "nav",

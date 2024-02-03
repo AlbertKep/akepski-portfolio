@@ -140,6 +140,8 @@ export const Logo = styled.div`
   }
 `;
 export const MobileIcon = styled(Logo)`
+  /* display: flex;
+  align-items: center; */
   @media only screen and (min-width: 960px) {
     display: none;
   }

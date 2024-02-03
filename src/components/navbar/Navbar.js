@@ -9,8 +9,7 @@ import {
   MobileIcon,
 } from "./Navbar.styled";
 import logo from "../../assets/svg/logo.svg";
-import hamburger from "../../assets/svg/hamburger.svg";
-import close from "../../assets/svg/close.svg";
+import HamburgerIcon from "../svgComponents/HamburgerIcon";
 import { useEffect } from "react";
 import { useAnimate } from "framer-motion";
 import { openedMenu, hiddenMenu, desktopMenu } from "../../animationsSettings";
@@ -27,7 +26,6 @@ const Navbar = ({ getRef }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sections, setSections] = useState(data);
   const [scope, animate] = useAnimate();
-  // const [sWidth, setSWidth] = useState(window.innerWidth);
   const currentWidth = useCheckWidth();
 
   const handleClick = () => {
@@ -62,7 +60,7 @@ const Navbar = ({ getRef }) => {
           <img src={logo} alt="logo" />
         </Logo>
         <MobileIcon onClick={handleClick}>
-          <img src={!isOpen ? hamburger : close} alt="menu icon" />
+          <HamburgerIcon isOpen={isOpen} />
         </MobileIcon>
       </IconsContainer>
 

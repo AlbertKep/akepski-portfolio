@@ -26,6 +26,7 @@ export const sectionThemes = {
     linkFontColor: "#000",
     activelinkBgColor: "#000",
     linkBgColor: "#fff",
+    menuIconColor: "#000",
   },
   sectionTwo: {
     pageBarBackgroundColor: "#fff",
@@ -35,6 +36,7 @@ export const sectionThemes = {
     linkFontColor: "#000",
     activelinkBgColor: "#000",
     linkBgColor: "#01C38D",
+    menuIconColor: "#fff",
   },
   sectionThree: {
     pageBarBackgroundColor: "#fff",
@@ -44,6 +46,7 @@ export const sectionThemes = {
     linkFontColor: "#01C38D",
     activelinkBgColor: "#01C38D",
     linkBgColor: "#fff",
+    menuIconColor: "#01C38D",
   },
   sectionFour: {
     pageBarBackgroundColor: "#01C38D",
@@ -53,5 +56,6 @@ export const sectionThemes = {
     linkFontColor: "#000",
     activelinkBgColor: "#000",
     linkBgColor: "#fff",
+    menuIconColor: "#000",
   },
 };
