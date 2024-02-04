@@ -5,15 +5,15 @@ import {
   Navigation,
   Menu,
   MenuLink,
-  Logo,
+  // Logo,
   MobileIcon,
 } from "./Navbar.styled";
-import logo from "../../assets/svg/logo.svg";
 import HamburgerIcon from "../svgComponents/HamburgerIcon";
 import { useEffect } from "react";
 import { useAnimate } from "framer-motion";
 import { openedMenu, hiddenMenu, desktopMenu } from "../../animationsSettings";
 import useCheckWidth from "../../hooks/useCheckWidth";
+import Logo from "../svgComponents/Logo";
 
 const data = [
   { name: "home", isActive: "active" },
@@ -56,9 +56,7 @@ const Navbar = ({ getRef }) => {
   return (
     <NavbarContainer ref={scope}>
       <IconsContainer>
-        <Logo>
-          <img src={logo} alt="logo" />
-        </Logo>
+        <Logo />
         <MobileIcon onClick={handleClick}>
           <HamburgerIcon isOpen={isOpen} />
         </MobileIcon>
