@@ -6,6 +6,7 @@ export const Container = styled.section`
   justify-content: center;
   align-items: center;
   padding: 2em;
+  overflow: hidden;
 `;
 
 export const Heading = styled.h3`
