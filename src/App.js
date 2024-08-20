@@ -12,6 +12,7 @@ import Loader from "./components/loader/Loader";
 import { useRef, useState, useEffect, useReducer } from "react";
 import { useQuery } from "@apollo/client";
 import { PAGES } from "./services/queries";
+import Footer from "./pages/footer/Footer";
 
 const App = () => {
   const { loading, error, data } = useQuery(PAGES);
@@ -22,7 +23,7 @@ const App = () => {
   const contactRef = useRef();
 
   const [currentPage, setCurrentPage] = useState("01");
-  const [pages, setPages] = useState();
+  const [pages, setPages] = useState([]);
 
   const updateCurrentPage = (page) => {
     setCurrentPage(page);
@@ -64,11 +65,13 @@ const App = () => {
   });
 
   useEffect(() => {
-    console.log(state);
-    const filteredData = () => {
+    const filteredData = async () => {
       const pages = [];
+      console.log(data)
+
       if (data) {
-        data.pages.data.forEach((data, index) => {
+
+      await data.pages.data.forEach((data, index) => {
           pages.push({
             id: data.id,
             title: data.attributes.title,
@@ -92,7 +95,6 @@ const App = () => {
 
       setPages(pages);
     };
-
     filteredData();
   }, [data]);
 
@@ -137,6 +139,8 @@ const App = () => {
         data-test-id="contact"
         contactData={pages[3]}
       />
+
+      <Footer/>
     </ThemeProvider>
   );
 };
